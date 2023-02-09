@@ -1,0 +1,53 @@
+#日志相关配置
+log:
+    show_info:      true    #print info message
+    syslog:         true    #true use syslog|rsyslog
+    syslog_type:    ""      #UNIX domain sockets, UDP or TCP, default local
+    syslog_addr:    ""      #udp or tcp syslog addr
+    syslog_priority: 2      #LOG_[EMERG=0 ALERT=1 CRIT ERR WARNING NOTICE INFO DEBUG LOCAL0 1<< 19..LOCAL7<<26]
+    path: ""                #syslog=false the log save path
+    name: "dns_proxy"       #syslog tag or log save file name prefix
+    max_size: "16M"         #syslog=false one log file size, B M G T P
+    max_count: 256          #syslog=false log file max count
+    max_hold: 365           #syslog=false log file max days
+
+#oauth2.0
+oauth:
+    url: "https://a.b.com"          #oauth2.0 server url
+    auth: "/oauth/authorize"        #auth url path
+    token: "/oauth/token"           #token url path
+    info: "/oauth/userinfo"         #user info url path
+    app_id: "dns_id"                #oauth2.0 appid
+    app_secret: "dns_secret"        #oauth2.0 secret
+    root_path: []                   #user info json tree node eg:[data, usr, info]
+    attr_id: ["uid"]                #user ID json key
+    attr_name: "name"               #user name  json key
+    attr_fname: "firstname"         #first name json key
+    attr_lname: "lastname"          #last name  json key
+    attr_email: "email"             #email json key
+    cookie_pass: "xxx"              #password to gen cookie
+    cookie_hold: "30d"              #cookie validity d(day) h(hour) m(minute) s(second)
+    scope: "nomadli dns oauth2"     #safe string
+    cb_ulr: "http://a.b.c.d:8080"   #auth2.0 call back url
+
+dns:
+    type: "udp4"
+    port: 53
+    nat: false  #the dns after nat?
+    forwards:   #upstream dns server
+        - "8.8.8.8:53"
+        - "4.4.4.4:53"
+
+web:
+    port: 8080
+    sqlite:	"/Users/nomadli/Downloads/build-disk/dns.db"
+    needlogin: false #edit dns need login
+    timelocal: "Asia/Shanghai"
+    rootca: "/Users/nomadli/Downloads/build-disk/ca.pem"
+    rootkey: "/Users/nomadli/Downloads/build-disk/key.pem"
+    cer: "/Users/nomadli/Downloads/build-disk/cers"
+    local:
+        aa.com: {ip: ["10.228.131.167"], tls: false}
+
+tls:
+    port: 443

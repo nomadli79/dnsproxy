@@ -1,0 +1,14 @@
+[Unit]
+Description=nomadli dns proxy server
+After=syslog.target network.target remote-fs.target nss-lookup.target
+
+[Service]
+User=root
+Type=simple
+ExecStart=/NMLI/dnsproxy/dnsproxy
+ExecStop=/bin/kill -HUP ${MAINPID}
+Restart=always
+WatchdogSec=2s
+
+[Install]
+WantedBy=multi-user.target
