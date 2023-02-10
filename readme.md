@@ -1,3 +1,5 @@
+[中文](https://github.com/nomadli79/dnsproxy/blob/main/readme_cn.md)
+
 ## functions of dnsproxy
 - Set private domain name: save the configuration according to the source IP address of the submitted DNS settings. When a DNS request is sent, the IP address corresponding to the domain name is returned based on the source IP address of the request.
 - Set a generic private domain name: If no results are found in the first step, the generic private domain name will be queried and the corresponding IP address will be returned.
